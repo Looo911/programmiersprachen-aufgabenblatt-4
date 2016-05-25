@@ -1,0 +1,2 @@
+/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/source/CMakeFiles/tests.dir
+/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/external/glfw-3.0.3/src/CMakeFiles/glfw.dir

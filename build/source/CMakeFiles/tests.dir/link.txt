@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++14 -Wall   CMakeFiles/tests.dir/TestList.cpp.o  -o ../tests -rdynamic 

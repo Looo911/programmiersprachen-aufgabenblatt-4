@@ -1,0 +1,79 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3979205676/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3979205676.dir/build.make CMakeFiles/cmTryCompileExec3979205676.dir/build
+make[1]: Entering directory '/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report "/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp/CMakeFiles" 1
+Building C object CMakeFiles/cmTryCompileExec3979205676.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3979205676.dir/CheckSymbolExists.c.o   -c "/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c"
+Linking C executable cmTryCompileExec3979205676
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3979205676.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec3979205676.dir/CheckSymbolExists.c.o  -o cmTryCompileExec3979205676 -rdynamic 
+CMakeFiles/cmTryCompileExec3979205676.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec3979205676.dir/build.make:88: recipe for target 'cmTryCompileExec3979205676' failed
+make[1]: Leaving directory '/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec3979205676] Error 1
+Makefile:117: recipe for target 'cmTryCompileExec3979205676/fast' failed
+make: *** [cmTryCompileExec3979205676/fast] Error 2
+
+File /home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec110019435/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec110019435.dir/build.make CMakeFiles/cmTryCompileExec110019435.dir/build
+make[1]: Entering directory '/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report "/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp/CMakeFiles" 1
+Building C object CMakeFiles/cmTryCompileExec110019435.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec110019435.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.2/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec110019435
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec110019435.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec110019435.dir/CheckFunctionExists.c.o  -o cmTryCompileExec110019435 -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec110019435.dir/build.make:88: recipe for target 'cmTryCompileExec110019435' failed
+make[1]: *** [cmTryCompileExec110019435] Error 1
+make[1]: Leaving directory '/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp'
+Makefile:117: recipe for target 'cmTryCompileExec110019435/fast' failed
+make: *** [cmTryCompileExec110019435/fast] Error 2
+
+
+Determining if the function glXGetProcAddressEXT exists failed with the following output:
+Change Dir: /home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2526413902/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2526413902.dir/build.make CMakeFiles/cmTryCompileExec2526413902.dir/build
+make[1]: Entering directory '/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report "/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp/CMakeFiles" 1
+Building C object CMakeFiles/cmTryCompileExec2526413902.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=glXGetProcAddressEXT   -o CMakeFiles/cmTryCompileExec2526413902.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.2/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec2526413902
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2526413902.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=glXGetProcAddressEXT    CMakeFiles/cmTryCompileExec2526413902.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2526413902 -rdynamic -lGL 
+CMakeFiles/cmTryCompileExec2526413902.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0x15): undefined reference to `glXGetProcAddressEXT'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTryCompileExec2526413902.dir/build.make:89: recipe for target 'cmTryCompileExec2526413902' failed
+make[1]: Leaving directory '/home/lo/Dropbox/2. Semester/Programmiersprachen/programmiersprachen-aufgabenblatt-4/build/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec2526413902] Error 1
+Makefile:117: recipe for target 'cmTryCompileExec2526413902/fast' failed
+make: *** [cmTryCompileExec2526413902/fast] Error 2
+
+
