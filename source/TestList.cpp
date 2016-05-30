@@ -110,6 +110,21 @@ TEST_CASE ("compare two lists", "[operators]")
 	REQUIRE((list == poo) == false);
 }
 
+TEST_CASE ("compare two lists of different size", "[operators]")
+{
+	List<int> list;
+	List<int> poo;
+	list.push_back (1);
+	
+	poo.push_back (1);
+	poo.push_back (2);
+	
+	
+	REQUIRE(list != poo);
+}
+
+
+
 TEST_CASE ("compare two lists with different ends", "[operators]")
 {
 	List<int> list;
@@ -128,6 +143,24 @@ TEST_CASE ("compare two lists with different ends", "[operators]")
 }
 
 
+TEST_CASE ("compare two lists with different ends with !=", "[operators]")
+{
+	List<int> list;
+	List<int> poo;
+	list.push_back (1);
+	list.push_back (2);
+	list.push_back (3);
+	list.push_back (6);
+	poo.push_back (1);
+	poo.push_back (2);
+	poo.push_back (3);
+	poo.push_back (5);
+	
+	REQUIRE(list != poo);
+
+}
+
+
 TEST_CASE ("copy a list", "[operators]")
 {
 	List<int> list;
@@ -138,6 +171,16 @@ TEST_CASE ("copy a list", "[operators]")
 	list.push_back (6);
 	
 	List<int> poo(list);
+
+	for (auto i = list.begin(); i != list.end(); ++i)
+	{
+		std::cout << "1: " << *i << "\n";
+	}
+
+	for (auto i = poo.begin(); i != poo.end(); ++i)
+	{
+		std::cout << "2: "<< *i << "\n";
+	}
 	
 	REQUIRE(list == poo);
 
@@ -154,6 +197,12 @@ TEST_CASE ( " copy constructor " , " [ constructor ] " )
 	REQUIRE (list == list2);
 }
 
+TEST_CASE ( " copy constructor: empty list" , " [ constructor ] " )
+{
+	List<int> list;
+	List<int> list2 {list};
+	REQUIRE (list == list2);
+}
 
 
 

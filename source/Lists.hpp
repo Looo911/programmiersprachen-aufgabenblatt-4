@@ -103,25 +103,23 @@ template <typename T>
 bool operator==(List<T>const& xs , List<T>const& ys)
 {	
 
-		if (xs.size() == ys.size())
+		if (xs.size() != ys.size())
 		{	
-			std::cout <<"Size matches, start comparing:   " << "\n";
-			ListIterator<T> a = ys.begin();
-			ListIterator<T> i;
-			for (i = xs.begin(); i != xs.end(); ++i)
-			{	
-				std::cout << *a <<"   " << *i << "\n";
-				if (*i != *a)
-				{
-					return false;
-				}
-				++a;
-			}
-
-			if(i==xs.end())
-				return true;
+			return false;
 		}
-		return false;
+
+		std::cout <<"Size matches, start comparing:   " << "\n";
+		ListIterator<T> a = ys.begin();
+		for (auto i = xs.begin(); i != xs.end(); ++i, ++a)
+		{	
+			std::cout << *a <<"   " << *i << "\n";
+			if (*i != *a)
+			{
+				return false;
+			}
+			
+		}
+		return true;
 }
 
 
@@ -160,15 +158,18 @@ public:
 		m_last{nullptr}
 		
 		{
-			for (auto i = a.begin(); i != a.end(); ++i)
+			if (!a.empty())
 			{
-				push_back(*i);
+				for (auto i = a.begin(); i != a.end(); ++i)
+				{
+					push_back(*i);
+				}
 			}
 		}
 	
 	std::size_t size() const
-		{//return m_size;
-			return std::distance(begin(), end());
+		{
+			return m_size;
 		}
 
 	bool empty () const
@@ -275,6 +276,16 @@ public:
 		    pop_front();
 	    }           
     }
+
+
+   iterator insert(iterator pos, const T& value )
+   {
+
+		ListNode<T>* v1 = new ListNode<T>(value, pos.m_node->m_prev, pos.m_node);
+		pos.m_node->m_prev->m_next = v1;
+		pos.m_node->m_prev = v1;
+
+   }
 
 
 	T& front() const
