@@ -1,6 +1,8 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "Lists.hpp"
+#include <string>
+#include <vector>
 
 
 
@@ -177,10 +179,13 @@ TEST_CASE ("copy a list", "[operators]")
 		std::cout << "1: " << *i << "\n";
 	}
 
+	std::cout << "\n";
+
 	for (auto i = poo.begin(); i != poo.end(); ++i)
 	{
 		std::cout << "2: "<< *i << "\n";
 	}
+	std::cout << "\n";
 	
 	REQUIRE(list == poo);
 
@@ -204,6 +209,128 @@ TEST_CASE ( " copy constructor: empty list" , " [ constructor ] " )
 	REQUIRE (list == list2);
 }
 
+TEST_CASE ( "insert" , " [iterators] " )
+{	
+	std::cout << "Aufgabe 4.8: insert" << "\n";
+	std::cout << "\n";
+	List<std::string> list;
+	
+	list.push_back ("Lucas");
+	list.push_back ("stinkt");
+	list.push_back ("nach");
+	list.push_back ("Liebe");
+
+	list.insert(++list.begin(), "denkt, er");
+
+
+	for (auto i = list.begin(); i != list.end(); ++i)
+	{	
+		std::cout << *i << "\n";
+	}
+
+	REQUIRE(5 == list.size());
+
+	std::cout << "\n";
+}
+
+
+TEST_CASE ( "self reverse" , " [member] " )
+{
+	std::cout << "Aufgabe 4.9: function reverse" << "\n";
+	std::cout << "\n";
+
+	List<std::string> list;
+	
+	list.push_back ("dich");
+	list.push_back ("mag");
+	list.push_back ("keiner");
+	list.push_back ("rasen");
+
+	list.reverse();
+
+
+	for (auto i = list.begin(); i != list.end(); ++i)
+	{	
+		std::cout << *i << "\n";
+	}
+
+	REQUIRE(4 == list.size());
+
+	std::cout << "\n";
+}
+
+TEST_CASE ( "function: reverse" , " [iterators] " )
+{	
+	std::cout << "Aufgabe 4.9: function reverse" << "\n";
+	std::cout << "\n";
+
+	List<std::string> list;
+	
+	list.push_back ("dich");
+	list.push_back ("mag");
+	list.push_back ("keiner");
+	list.push_back ("rasen");
+
+	auto a = reverse(list);
+
+	for (auto i = a.begin(); i != a.end(); ++i)
+	{	
+		std::cout << *i << "\n";
+	}
+
+	std::cout << "\n";
+
+	REQUIRE(4 == list.size());
+
+	std::cout << "\n";
+}
+
+//std::copy:
+TEST_CASE ( "list in vector" , " [iterators] " )
+{	List<std::string> list;
+	
+	list.push_back ("Heute");
+	list.push_back ("kopieren");
+	list.push_back ("wir");
+	list.push_back ("eine");
+	list.push_back ("vektor");
+
+
+	std::vector<std::string> to_vector(list.size());
+    std::copy(list.begin(), list.end(), to_vector.begin());
+
+    std::cout << "Aufgabe 4.10: list in vector" << "\n";
+    std::copy(to_vector.begin(), to_vector.end(),
+              std::ostream_iterator<std::string>(std::cout, " "));
+    std::cout << "\n";
+}
+
+TEST_CASE ( "copy a list into a new" , "[iterators]" )
+{	List<std::string> list;
+	
+	list.push_back ("Heute");
+	list.push_back ("kopieren");
+	list.push_back ("wir");
+	list.push_back ("eine");
+	list.push_back ("vektor");
+
+	auto a = copy(list);
+
+	REQUIRE(a == list);
+}
+
+TEST_CASE ( " move constructor " , " [ constructor ] " )
+{
+	List<int> list ;
+	list.push_front (1);
+	list.push_front (2);
+	list.push_front (3);
+	list.push_front (4);
+	List<int> list2 ( std :: move ( list ));
+	REQUIRE (0 == list.size ());
+	REQUIRE ( list.empty ());
+	REQUIRE (4 == list2.size ());
+}
 
 
 int main(int argc, char *argv[])

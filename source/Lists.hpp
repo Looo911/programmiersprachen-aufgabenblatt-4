@@ -18,16 +18,6 @@ struct ListNode
 	ListNode * m_next;
 };
 
-/*
-template <typename T>
-struct ListIterator
-{
-	friend class List <T >;
-	// not implemented yet
-	private :
-	ListNode <T >* m_node = nullptr ;
-};
-*/
 
 template <typename T>
 struct ListConstIterator
@@ -37,6 +27,21 @@ struct ListConstIterator
 	private :
 	ListNode <T >* m_node = nullptr ;
 };
+
+
+template <typename T>
+List<T> reverse(List<T> a)
+{
+	a.reverse();
+	return a;
+};
+
+template <typename T>
+List<T> copy(List<T> a)
+{
+	return a;
+};
+
 
 
 
@@ -67,7 +72,14 @@ struct ListIterator
 
 	Self& operator++() 
 		{
-			m_node = m_node->m_next;
+			if (m_node)
+			    m_node = m_node->m_next;
+			return *this;
+		}
+
+	Self& operator--() 
+		{
+			m_node = m_node->m_prev;
 			return *this;
 		}
 
@@ -166,6 +178,22 @@ public:
 				}
 			}
 		}
+
+	friend void swap(List& a, List& b) // swap Funktion für zuweisungsoperator.
+		{a.swap(b);}
+
+	List<T> (List<T> && inlist)
+		: m_size(inlist.m_size),
+		m_first(inlist.m_first),
+		m_last(inlist.m_last)
+
+	{
+		inlist.m_size = 0;
+		inlist.m_first = nullptr;
+		inlist.m_last = nullptr;
+	}
+
+	~List<T> () {clear();}				//Destruktor
 	
 	std::size_t size() const
 		{
@@ -284,16 +312,37 @@ public:
 		ListNode<T>* v1 = new ListNode<T>(value, pos.m_node->m_prev, pos.m_node);
 		pos.m_node->m_prev->m_next = v1;
 		pos.m_node->m_prev = v1;
+		m_size+=1;
+		return ListIterator<T> (v1);
+	}
 
-   }
+	void reverse()
+	{	
+		for (iterator i = begin(); i != end(); --i)
+		{	
+			std::swap(i.m_node->m_prev, i.m_node->m_next);
+		}
+		std::swap(m_first, m_last);
+	};
+	
 
 
-	T& front() const
+	T const& front() const
 	{
 		return m_first->m_value;
 	}
 
-	T& back() const
+	T const& back() const
+	{
+		return m_last->m_value;
+	}
+
+	T& front()
+	{
+		return m_first->m_value;
+	}
+
+	T& back()
 	{
 		return m_last->m_value;
 	}
